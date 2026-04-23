@@ -1115,7 +1115,7 @@
       if (musicPlaying) { _pauseMusic(); } else { _startMusic(); }
     }
 
-        // Mercado Pago: copia CBU y abre MP
+        // Mercado Pago: copia CBU y abre app o web
     async function copiarYAbrirMP(cbu, btn) {
       const orig = btn.innerHTML;
       try { await navigator.clipboard.writeText(cbu); }
@@ -1126,10 +1126,30 @@
         document.execCommand('copy'); document.body.removeChild(ta);
       }
       btn.textContent = '✓ CBU copiado — abriendo Mercado Pago…';
-      setTimeout(() => {
-        window.open('https://www.mercadopago.com.ar/', '_blank', 'noopener');
-        btn.innerHTML = orig;
-      }, 1200);
+
+      // Intentar abrir la app nativa
+      const appUrl = 'mercadopago://';
+      const webUrl = 'https://www.mercadopago.com.ar/';
+
+      const iframe = document.createElement('iframe');
+      iframe.style.cssText = 'position:fixed;opacity:0;width:1px;height:1px;';
+      document.body.appendChild(iframe);
+      iframe.src = appUrl;
+
+      // Si en 1500ms no abrió la app, redirige a la web
+      const fallback = setTimeout(function() {
+        document.body.removeChild(iframe);
+        window.open(webUrl, '_blank', 'noopener');
+      }, 1500);
+
+      // Si el documento pierde foco, la app se abrió — cancelar fallback
+      window.addEventListener('blur', function onBlur() {
+        clearTimeout(fallback);
+        document.body.removeChild(iframe);
+        window.removeEventListener('blur', onBlur);
+      }, { once: true });
+
+      setTimeout(() => { btn.innerHTML = orig; }, 2500);
     }
 
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbybs15bINdWYQp8Z288jzyZQKu6pTlBILaCI6Yovv5yQCKj8SJvU5UKxLNB9mLPPB7O8Q/exec';
