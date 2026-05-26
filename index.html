@@ -6,7 +6,7 @@
   <title>Giuliana & Gustavo Benjamín — 05.09.2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
     /* ─── Variables ─────────────────────────────────────────── */
@@ -45,7 +45,7 @@
     }
 
     /* ─── Typography helpers ─────────────────────────────────── */
-    .script { font-family: 'Tangerine', cursive; font-weight: 400; }
+    .script { font-family: 'Great Vibes', cursive; font-weight: 400; }
 
     .label {
       font-size: 0.58rem;
@@ -71,7 +71,7 @@
     }
 
     .nav-brand {
-      font-family: 'Tangerine', cursive;
+      font-family: 'Great Vibes', cursive;
       font-weight: 400;
       font-size: 2rem;
       color: var(--text);
@@ -136,7 +136,7 @@
     }
 
     .hero-names {
-      font-family: 'Tangerine', cursive;
+      font-family: 'Great Vibes', cursive;
       font-weight: 400;
       font-size: clamp(5rem, 14vw, 11rem);
       line-height: 1.1;
@@ -181,8 +181,33 @@
     /* Countdown */
     .countdown {
       display: flex;
-      gap: clamp(1.5rem, 5vw, 4rem);
+      gap: clamp(0.6rem, 2.5vw, 3rem);
       align-items: flex-end;
+      flex-wrap: nowrap;
+    }
+
+    .countdown-sep {
+      font-size: clamp(1rem, 2.5vw, 1.8rem);
+      color: var(--line);
+      line-height: 1;
+      padding-bottom: 0.4rem;
+    }
+
+    .cd-num {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(0.91rem, 2.27vw, 1.82rem);
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1;
+      min-width: 2ch;
+      text-align: center;
+    }
+
+    .cd-lbl {
+      font-size: clamp(0.38rem, 1vw, 0.48rem);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-light);
     }
 
     .countdown-unit {
@@ -239,7 +264,7 @@
     }
 
     .sec-title {
-      font-family: 'Tangerine', cursive;
+      font-family: 'Great Vibes', cursive;
       font-weight: 400;
       font-size: clamp(3.2rem, 7vw, 5.5rem);
       color: var(--text);
@@ -291,7 +316,7 @@
     }
 
     .event-name-script {
-      font-family: 'Tangerine', cursive;
+      font-family: 'Great Vibes', cursive;
       font-weight: 400;
       font-size: 2.8rem;
       color: var(--text);
@@ -455,7 +480,7 @@
     }
 
     .success-msg .s-title {
-      font-family: 'Tangerine', cursive;
+      font-family: 'Great Vibes', cursive;
       font-weight: 400;
       font-size: 3.5rem;
       color: var(--text);
@@ -548,7 +573,7 @@
     }
 
     .footer-names {
-      font-family: 'Tangerine', cursive;
+      font-family: 'Great Vibes', cursive;
       font-weight: 400;
       font-size: clamp(3.5rem, 8vw, 6rem);
       color: var(--ivory);
@@ -626,6 +651,27 @@
       100% { opacity: 0;   transform: scale(1.35); }
     }
 
+    /* ─── OVERLAY ANIMATIONS ─────────────────────────────────── */
+    @keyframes fadeScale {
+      from { opacity: 0; transform: scale(0.82); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes expandLine {
+      from { width: 0; opacity: 0; }
+      to   { width: 36px; opacity: 1; }
+    }
+
+    #intro-overlay .ov-eyebrow  { opacity: 0; animation: fadeUp    0.7s ease forwards; animation-delay: 0.2s; }
+    #intro-overlay .overlay-names { opacity: 0; animation: fadeScale 1s   ease forwards; animation-delay: 0.7s; }
+    #intro-overlay .overlay-rule  { width: 0; opacity: 0; animation: expandLine 0.7s ease forwards; animation-delay: 1.5s; }
+    #intro-overlay .overlay-date  { opacity: 0; animation: fadeUp    0.7s ease forwards; animation-delay: 1.9s; }
+    #intro-overlay .overlay-phrase{ opacity: 0; animation: fadeUp    0.7s ease forwards; animation-delay: 2.4s; }
+    #intro-overlay .overlay-enter { opacity: 0; animation: fadeUp    0.7s ease forwards; animation-delay: 3s; }
+
     /* ─── INTRO OVERLAY ──────────────────────────────────────── */
     #intro-overlay {
       position: fixed;
@@ -650,7 +696,7 @@
       margin: 1.5rem auto;
     }
     .overlay-names {
-      font-family: 'Tangerine', cursive;
+      font-family: 'Great Vibes', cursive;
       font-weight: 400;
       font-size: clamp(4rem, 12vw, 7rem);
       color: var(--text);
@@ -722,7 +768,7 @@
 
   <!-- ═══ INTRO OVERLAY (desbloquea música) ════════════════════ -->
   <div id="intro-overlay">
-    <p style="font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-light);margin-bottom:2rem;">los invitamos a celebrar</p>
+    <p class="ov-eyebrow" style="font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-light);margin-bottom:2rem;">los invitamos a celebrar</p>
     <div class="overlay-names">Giuliana &amp; Gustavo Benjamín</div>
     <div class="overlay-rule"></div>
     <p class="overlay-date">05 · Septiembre · 2026 · Tucumán</p>
@@ -814,7 +860,7 @@
       <div class="event-grid">
         <!-- Ceremonia -->
         <div class="event-card fade-in-up">
-          <p class="event-tag">Ceremonia Religiosa</p>
+          <p class="event-tag">Celebración Religiosa</p>
           <p class="event-name-script">Parroquia Nuestra Señora del Valle</p>
           <p class="event-time">16:00 hs</p>
           <p class="event-address">Florida Sur 251<br>Yerba Buena, Tucumán</p>
@@ -846,6 +892,19 @@
           </a>
         </div>
       </div>
+
+      <!-- Botón Agendar en Google Calendar -->
+      <div class="fade-in-up" style="text-align:center;margin-top:2.5rem;">
+        <a class="btn-maps"
+          href="https://www.google.com/calendar/render?action=TEMPLATE&text=Boda+Giuliana+%26+Gustavo+Benjam%C3%ADn&dates=20260905T190000Z/20260906T030000Z&details=Celebraci%C3%B3n+religiosa+16%3A00hs+%E2%80%94+Parroquia+Nuestra+Se%C3%B1ora+del+Valle%2C+Florida+Sur+251%2C+Yerba+Buena.%0ARecepc%C3%B3n+17%3A30hs+%E2%80%94+Sal%C3%B3n+Las+Mar%C3%ADas%2C+RP338%2C+San+Miguel+de+Tucum%C3%A1n.&location=Parroquia+Nuestra+Se%C3%B1ora+del+Valle%2C+Florida+Sur+251%2C+Yerba+Buena%2C+Tucum%C3%A1n&sf=true&output=xml"
+          target="_blank" rel="noopener noreferrer">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          Agendar en Google Calendar
+        </a>
+      </div>
+
     </div>
   </section>
 
