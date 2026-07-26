@@ -862,7 +862,7 @@
         <div class="event-card fade-in-up">
           <p class="event-tag">Celebración Religiosa</p>
           <p class="event-name-script">Parroquia Nuestra Señora del Valle</p>
-          <p class="event-time">16:00 hs</p>
+          <p class="event-time">16:15 hs</p>
           <p class="event-address">Florida Sur 251<br>Yerba Buena, Tucumán</p>
           <a class="btn-maps"
              href="https://www.google.com/maps/search/?api=1&query=Iglesia+Nuestra+Se%C3%B1ora+del+Valle+Florida+Sur+251+Yerba+Buena+Tucum%C3%A1n"
@@ -1019,6 +1019,10 @@
       </div>
 
       <form id="musica-form" class="fade-in-up" onsubmit="submitMusica(event)">
+        <div class="form-group">
+          <label for="m-nombre">Tu nombre</label>
+          <input type="text" id="m-nombre" placeholder="¿Quién dedica esta canción?" required>
+        </div>
         <div class="form-row">
           <div class="form-group">
             <label for="m-cancion">Canción</label>
@@ -1195,13 +1199,13 @@
       setTimeout(() => { btn.innerHTML = orig; }, 2500);
     }
 
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbybs15bINdWYQp8Z288jzyZQKu6pTlBILaCI6Yovv5yQCKj8SJvU5UKxLNB9mLPPB7O8Q/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzHw-AM0exJ4ow1k5AU99klFyr6Aj2qblSBkh648aKmbz5bnAdSh4QmsF3dHmqt-TawTQ/exec';
 
     /* ── Countdown ─────────────────────────────────────────── */
     function pad(n) { return String(n).padStart(2, '0'); }
 
     function tickCountdown() {
-      const target = new Date('2026-09-05T16:00:00-03:00');
+      const target = new Date('2026-09-05T16:15:00-03:00');
       const diff   = target - new Date();
 
       if (diff <= 0) {
@@ -1268,6 +1272,7 @@
 
       await sendData({
         tipo       : 'musica',
+        nombre     : document.getElementById('m-nombre').value,
         cancion    : document.getElementById('m-cancion').value,
         artista    : document.getElementById('m-artista').value,
         dedicatoria: document.getElementById('m-dedicatoria').value,
